@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theeraporn Poonprasat - Cybersecurity Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #030712;
+            --bg-card: rgba(10, 17, 35, 0.75);
+            --border-cyber: rgba(59, 130, 246, 0.25);
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Cyberpunk Grid Background */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(to right, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(3, 7, 18, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 6%;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-cyber);
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo span {
+            color: var(--accent-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: transform 0.2s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-cyber);
+            border-radius: 1.25rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 12px 40px 0 rgba(6, 182, 212, 0.12);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            padding-top: 6rem;
+            gap: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 50px;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-section h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 520px;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline {
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-cyber);
+            padding: 0.8rem 1.8rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(10, 17, 35, 0.6);
+            border: 1px solid var(--border-cyber);
+            border-radius: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item strong {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .stat-item span {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .hero-img-container {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.4));
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin: 5rem 0 3rem 0;
+        }
+
+        .section-tag {
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .section-header h2 span {
+            color: var(--accent-cyan);
+        }
+
+        /* About Me Card */
+        .about-card {
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-avatar {
+            width: 100%;
+            height: 280px;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .about-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-details p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .about-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .info-row strong {
+            color: var(--text-main);
+        }
+
+        /* Skills Dashboard */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 2rem;
+        }
+
+        .skills-box {
+            padding: 2.5rem;
+        }
+
+        .badges-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-badge {
+            background: rgba(6, 182, 212, 0.06);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .radar-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .radar-box svg {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+            margin-top: 1rem;
+        }
+
+        /* Certificates Section */
+        .cert-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1rem;
+        }
+
+        .cert-card {
+            padding: 1.2rem;
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border-cyber);
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+        }
+
+        .cert-card span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Projects Bento Grid (ปรับให้เข้ากับ 5 หมวดหมู่หลักใน Infographic) */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-cyber);
+            min-height: 320px;
+        }
+
+        .bento-card.wide {
+            grid-column: span 2;
+        }
+
+        .bento-tag {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.8rem;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 50px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .bento-content {
+            max-height: 180px;
+            overflow-y: auto;
+            padding-right: 0.4rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(6, 182, 212, 0.5) rgba(15, 23, 42, 0.3);
+        }
+
+        .bento-content::-webkit-scrollbar {
+            width: 5px;
+        }
+        .bento-content::-webkit-scrollbar-thumb {
+            background: rgba(6, 182, 212, 0.5);
+            border-radius: 4px;
+        }
+
+        .bento-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .bento-card ul {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .bento-card li {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-preview-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 0.8rem;
+            border: 1px solid var(--border-cyber);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .bento-footer {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .link-btn {
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Experience Timeline */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .exp-card {
+            padding: 2.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .exp-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .exp-info span {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-info h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .exp-info ul {
+            list-style-type: disc;
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .exp-info li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Activities Gallery */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .activity-item {
+            height: 180px;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-cyber);
+            position: relative;
+        }
+
+        .activity-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .activity-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-box {
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact-box h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-cyber);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media(max-width: 968px) {
+            .hero-section, .about-card, .skills-grid, .exp-grid {
+                grid-template-columns: 1fr;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .bento-card.wide {
+                grid-column: span 1;
+            }
+            .cert-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .activities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cyber-grid"></div>
+    <div class="ambient-glow" style="top: -10%; left: -10%;"></div>
+    <div class="ambient-glow" style="bottom: 10%; right: -5%;"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">🛡️<span>PORTFOLIO'S</span>THEERAPORN</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experiences</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-btn">Download CV ↓</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div>
+                <span class="hero-badge">Cyber Security Analyst | Tier 1</span>
+                <h1>Hello, I'm<br>Theeraporn Poonprasat</h1>
+                <h2>Cybersecurity Professional</h2>
+                <p>"มีประสบการณ์ทำงานด้านความปลอดภัยทางไซเบอร์ ครอบคลุมตั้งแต่การประเมินความเสี่ยง การตรวจสอบและคัดกรองภัยคุกคาม การรับมือเหตุการณ์ไม่พึงประสงค์ การบริหารจัดการโครงการ และการประสานงานหน่วยงานทั้งภาครัฐและเอกชน"</p>
+                
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">View My Work ➔</a>
+                    <a href="#about" class="btn-outline">Download CV ↓</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <strong>Security Operations</strong>
+                        <span>Tier 1 Analyst</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Computer Engineering</strong>
+                        <span>PSRU</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Thailand</strong>
+                        <span>Bangkok</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>3+ Certificates</strong>
+                        <span>Verified</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-img-container">
+                <img src="C_260822_7.jpg" alt="Theeraporn Poonprasat">
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-tag">About Me</span>
+                <h2>Get to know <span>me</span></h2>
+            </div>
+
+            <div class="glass-card about-card">
+                <div class="about-avatar">
+                    <img src="C_260822_7.jpg" alt="Theeraporn Profile">
+                </div>
+                <div class="about-details">
+                    <h3>นางสาวธีราพร พูนประสาท</h3>
+                    <span style="color: var(--accent-cyan); display: block; margin-bottom: 1rem;">เจ้าหน้าที่ Tier 1 ฝ่ายปฏิบัติการทางไซเบอร์ สำนักปฏิบัติการ สกมช.</span>
+                    <p>สนใจงานด้าน Cybersecurity, Threat Intelligence, Monitoring, Incident Response และเทคโนโลยีใหม่ ๆ เพื่อยกระดับความปลอดภัยทางดิจิทัลของหน่วยงานภาครัฐและเอกชน มีความเชี่ยวชาญทั้งด้านเทคนิคเชิงลึกและการประสานงานบูรณาการร่วมกับหน่วยงานภายนอก</p>
+
+                    <div class="about-info-grid">
+                        <div class="info-row">📅 <span>วันเกิด: 2 ตุลาคม 2544</span></div>
+                        <div class="info-row">📞 <span>เบอร์โทร: 061-732-4564</span></div>
+                        <div class="info-row">✉️ <span>อีเมล: theeraporn@ncsa.or.th</span></div>
+                        <div class="info-row">📍 <span>ที่อยู่: อ.ชนแดน จ.เพชรบูรณ์</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="section-header">
+                <span class="section-tag">Skills</span>
+                <h2>Technical Skills & <span>Competencies</span></h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="glass-card skills-box">
+                    <h3>Core Technical Domains</h3>
+                    <div class="badges-wrap">
+                        <span class="skill-badge">Network & Security</span>
+                        <span class="skill-badge">Security Operations</span>
+                        <span class="skill-badge">Threat Intelligence</span>
+                        <span class="skill-badge">Incident Response</span>
+                        <span class="skill-badge">Digital Forensics</span>
+                        <span class="skill-badge">OSINT</span>
+                        <span class="skill-badge">Penetration Testing</span>
+                        <span class="skill-badge">Vulnerability Assessment</span>
+                        <span class="skill-badge">Windows / Linux</span>
+                        <span class="skill-badge">Microsoft 365</span>
+                        <span class="skill-badge">Data Analysis</span>
+                        <span class="skill-badge">Report & Documentation</span>
+                    </div>
+                </div>
+
+                <div class="glass-card radar-box">
+                    <h3>Skill Radar Matrix</h3>
+                    <svg viewBox="0 0 200 200">
+                        <polygon points="100,20 170,60 170,140 100,180 30,140 30,60" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.4)" stroke-width="1"/>
+                        <polygon points="100,50 140,75 140,125 100,150 60,125 60,75" fill="rgba(59,130,246,0.3)" stroke="#3b82f6" stroke-width="2"/>
+                        <circle cx="100" cy="100" r="3" fill="#06b6d4"/>
+                        <text x="100" y="15" font-size="8" fill="#94a3b8" text-anchor="middle">Security Ops</text>
+                        <text x="180" y="65" font-size="8" fill="#94a3b8">Threat Intel</text>
+                        <text x="180" y="145" font-size="8" fill="#94a3b8">Incident</text>
+                        <text x="100" y="192" font-size="8" fill="#94a3b8" text-anchor="middle">Pentest / VA</text>
+                        <text x="10" y="145" font-size="8" fill="#94a3b8">OSINT</text>
+                        <text x="10" y="65" font-size="8" fill="#94a3b8">Forensics</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates">
+            <div class="section-header">
+                <span class="section-tag">Licenses & Certificates</span>
+                <h2>Certificates & <span>Courses</span></h2>
+            </div>
+
+            <div class="cert-container">
+                <div class="glass-card cert-card">
+                    <strong>NCSA</strong>
+                    <span>Cybersecurity Professional Course</span>
+                </div>
+                <div class="glass-card cert-card">
+                    <strong>NCSA</strong>
+                    <span>Cybersecurity Foundation Course</span>
+                </div>
+                <div class="glass-card cert-card">
+                    <strong>Microsoft</strong>
+                    <span>AI Skills for All</span>
+                </div>
+                <div class="glass-card cert-card">
+                    <strong>EC-Council</strong>
+                    <span>Ethical Hacking Essentials (EHE)</span>
+                </div>
+                <div class="glass-card cert-card">
+                    <strong>CompTIA</strong>
+                    <span>General Security Concepts (Security+)</span>
+                </div>
+                <div class="glass-card cert-card">
+                    <strong>NCSA & Retrospect</strong>
+                    <span>Technical Hands-on IR Exercise</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects & Work Section (ปรับตามหมวดหมู่ 5 ด้านหลักใน Infographic) -->
+        <section id="projects">
+            <div class="section-header">
+                <span class="section-tag">Projects & Key Works</span>
+                <h2>Cybersecurity Operations <span>Experience</span></h2>
+            </div>
+
+            <div class="bento-grid">
+                <!-- 1. Cybersecurity Operations & Security Assessment -->
+                <div class="glass-card bento-card wide">
+                    <span class="bento-tag">Domain 01</span>
+                    <div class="bento-content">
+                        <h3>Cybersecurity Operations & Security Assessment</h3>
+                        <ul>
+                            <li>ดำเนินการ Vulnerability Assessment (VA) และประเมินความเสี่ยงด้านความมั่นคงปลอดภัยให้กับหน่วยงานภาครัฐและเอกชน</li>
+                            <li>ประสานงานกับหน่วยงานเพื่อรวบรวมข้อมูล วิเคราะห์ช่องโหว่ และติดตามการแก้ไขประเด็นด้านความปลอดภัย</li>
+                            <li>ตรวจสอบและวิเคราะห์ SMS แบบ A2P (Application-to-Person) ที่มี URL แนบ โดยคัดกรองและตรวจสอบมากกว่า 500,000 URLs</li>
+                            <li>วิเคราะห์และจำแนก URL ตามระดับความเสี่ยง (Whitelist / Greylist / Blacklist / Invalid Data)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. Incident Response & Threat Hunting -->
+                <div class="glass-card bento-card">
+                    <span class="bento-tag">Domain 02</span>
+                    <div class="bento-content">
+                        <h3>Incident Response & Threat Hunting</h3>
+                        <ul>
+                            <li>ติดตั้งและดำเนินการ Deception Technology และ Threat Hunting Framework สำหรับหน่วยงานที่ประสบเหตุการณ์โจมตีทางไซเบอร์</li>
+                            <li>สนับสนุนการตรวจสอบและเฝ้าระวังภัยคุกคามทางไซเบอร์ในหน่วยงานที่ได้รับผลกระทบ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. Project Management -->
+                <div class="glass-card bento-card">
+                    <span class="bento-tag">Domain 03</span>
+                    <div class="bento-content">
+                        <h3>Project Management / Coordination</h3>
+                        <ul>
+                            <li>ทำหน้าที่ Project Manager / Project Coordinator ในโครงการด้าน Cybersecurity ได้แก่ Cyber Lab 68, NCERT 68, ThaiCERT 69, ThaiCERT 70</li>
+                            <li>บริหารและประสานงานโครงการหลายโครงการพร้อมกันตั้งแต่เริ่มต้นจนปิดโครงการ</li>
+                            <li>ประสานงานระหว่างหน่วยงานภาครัฐ เอกชน ผู้รับจ้าง และผู้เกี่ยวข้องในโครงการ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. Procurement / TOR / Contract Management -->
+                <div class="glass-card bento-card">
+                    <span class="bento-tag">Domain 04</span>
+                    <div class="bento-content">
+                        <h3>Procurement & Contract Management</h3>
+                        <ul>
+                            <li>จัดทำและประสานงานกระบวนการ TOR / Scope of Work</li>
+                            <li>ดำเนินการและประสานงานกระบวนการจัดซื้อจัดจ้าง</li>
+                            <li>ประสานงานการลงนามสัญญา และตรวจรับพัสดุและส่งมอบงาน</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. Documentation & Stakeholder Coordination -->
+                <div class="glass-card bento-card">
+                    <span class="bento-tag">Domain 05</span>
+                    <div class="bento-content">
+                        <h3>Documentation & Coordination</h3>
+                        <ul>
+                            <li>จัดทำเอกสารโครงการ รายงานผลการดำเนินงาน และเอกสารประกอบการประชุม</li>
+                            <li>ประสานงานกับหน่วยงานภาครัฐ เอกชน และผู้ให้บริการด้าน Cybersecurity</li>
+                            <li>จัดเตรียมข้อมูลสำหรับการรายงานความคืบหน้า ปัญหา อุปสรรค และผลการดำเนินงาน</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Special Design Work: NCSA CTF Logo -->
+                <div class="glass-card bento-card">
+                    <span class="bento-tag">Design</span>
+                    <div class="bento-content">
+                        <h3>NCSA CTF BoostCamp 2024</h3>
+                        <p>ออกแบบ Logo และผลงานสร้างสรรค์สำหรับการแข่งขัน NCSA CTF BoostCamp ประจำปี 2024</p>
+                        <img src="ncsa_ctf_logo.png" alt="NCSA CTF BoostCamp 2024 Logo Design" class="project-preview-img">
+                    </div>
+                    <div class="bento-footer">
+                        <a href="#contact" class="link-btn">View Detail ➔</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="section-header">
+                <span class="section-tag">Experience</span>
+                <h2>Work <span>Experience</span></h2>
+            </div>
+
+            <div class="exp-grid">
+                <div class="glass-card exp-card">
+                    <div class="exp-icon">🛡️</div>
+                    <div class="exp-info">
+                        <span>ปัจจุบัน</span>
+                        <h3>เจ้าหน้าที่ Tier 1</h3>
+                        <h4>ฝ่ายปฏิบัติการทางไซเบอร์ สำนักปฏิบัติการ สกมช.</h4>
+                        <ul>
+                            <li>ปฏิบัติงานด้านการวิเคราะห์และรับมือภัยคุกคามทางไซเบอร์</li>
+                            <li>ดำเนินการทดสอบช่องโหว่ (VA) และเจาะระบบ (Pentest)</li>
+                            <li>ประสานงานบูรณาการร่วมกับหน่วยงานภาครัฐและเอกชน</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-card exp-card">
+                    <div class="exp-icon">💻</div>
+                    <div class="exp-info">
+                        <span>อดีต (21 พ.ย. 2566 - 21 มี.ค. 2567)</span>
+                        <h3>นักศึกษาฝึกสหกิจ</h3>
+                        <h4>ฝ่ายตอบสนองและรับมือภัยคุกคามทางไซเบอร์ สำนักปฏิบัติการ สำนักงานคณะกรรมการการรักษาความมั่นคงปลอดภัยไซเบอร์แห่งชาติ (สกมช.)</h4>
+                        <ul>
+                            <li>เรียนรู้และปฏิบัติงานจริงด้าน Incident Response</li>
+                            <li>ตรวจวิเคราะห์ระบบเครือข่ายและภัยคุกคามทางไซเบอร์</li>
+                            <li>สนับสนุนภารกิจต่างๆ ของสำนักปฏิบัติการ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section>
+            <div class="section-header">
+                <span class="section-tag">Activities</span>
+                <h2>Training & <span>Activities</span></h2>
+            </div>
+
+            <div class="activities-grid">
+                <div class="activity-item"><img src="activity_1.jpg" alt="Activity 1"></div>
+                <div class="activity-item"><img src="activity_2.jpg" alt="Activity 2"></div>
+                <div class="activity-item"><img src="activity_3.jpg" alt="Activity 3"></div>
+                <div class="activity-item"><img src="activity_4.jpg" alt="Activity 4"></div>
+                <div class="activity-item"><img src="activity_5.jpg" alt="Activity 5"></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="glass-card contact-box">
+                <h3>Let's Connect 🤝</h3>
+                <p>Always open to new opportunities and collaborations.</p>
+
+                <div class="contact-details-grid">
+                    <div class="contact-item">📞 <strong>061-732-4564</strong></div>
+                    <div class="contact-item">✉️ <strong>theeraporn@ncsa.or.th</strong></div>
+                    <div class="contact-item">📍 <strong>อ.ชนแดน จ.เพชรบูรณ์</strong></div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn">in</a>
+                    <a href="#" class="social-btn">gh</a>
+                    <a href="#" class="social-btn">@</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Theeraporn Poonprasat. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
